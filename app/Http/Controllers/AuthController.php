@@ -80,4 +80,27 @@ class AuthController extends Controller
     }
 
     // Login
+    public function login(Request $request) {
+        //Check email & password match
+        if (!Auth::attempt($request->only('email', 'password'))) {
+            return response()->json([
+                'success' => False,
+                'message' => 'Login failed, Wrong Email or Password',
+                'code' => 401]
+                
+            );
+        } else {
+            $user = User::where('email', $request['email'])->firstOrFail();
+
+            $token = $user->createToken('auth_token')->plainTextToken;
+
+            return response()->json([
+                'success' => True,
+                'message' => 'Login success',
+                'access_token' => $token,
+                'token_type' => 'Bearer'
+            ]);
+        }
+        
+    }
 }
