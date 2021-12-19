@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KostController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/kost/getmykost', [KostController::class, 'getKostbyIdOwner']);
     Route::put('/kost/edit/{id}', [KostController::class, 'updateKost']);
     Route::delete('/kost/delete/{id}', [KostController::class, 'deleteKost']);
+
+    //availability
+    Route::get('/transaction/availability', [TransactionController::class, 'getAvailabilityStatus']);
+    Route::post('/kost/availability/ask/{kostId}', [TransactionController::class, 'askAvailabilityStatus']);
 
 });
 
