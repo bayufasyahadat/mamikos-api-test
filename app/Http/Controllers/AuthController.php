@@ -86,9 +86,8 @@ class AuthController extends Controller
             return response()->json([
                 'success' => False,
                 'message' => 'Login failed, Wrong Email or Password',
-                'code' => 401]
-                
-            );
+                'code' => 401
+            ]);
         } else {
             $user = User::where('email', $request['email'])->firstOrFail();
 

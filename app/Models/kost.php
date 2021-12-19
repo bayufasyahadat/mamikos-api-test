@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class kost extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'userId',
+        'image',
+        'name',
+        'location',
+        'price',
+        'description'
+    ];
+
+    protected $table = 'kost';
 }
