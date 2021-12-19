@@ -137,8 +137,21 @@ class KostController extends Controller
                 'message' => 'You dont have permission',
                 'code' => 403 
             ],403);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'delete success'
+            ]);
         } else {
-            
+            $kost = Kost::find($id);
+            if ($kost) {
+                $kost->destroy($id);
+            } else {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Not Found'
+                ],404);
+            }
         }
     }
 
