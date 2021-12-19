@@ -133,19 +133,19 @@ class KostController extends Controller
     public function deleteKost(Request $request, $id) {
         if ($request->user()['role'] != 1) {
             return response()->json([
-                'status' => 'Access forbidden',
+                'status' => false,
                 'message' => 'You dont have permission',
                 'code' => 403 
             ],403);
-
-            return response()->json([
-                'success' => true,
-                'message' => 'delete success'
-            ]);
         } else {
             $kost = Kost::find($id);
             if ($kost) {
                 $kost->destroy($id);
+                return response()->json([
+                    'success' => true,
+                    'message' => 'delete success',
+                    'code' => 200 
+                ]);
             } else {
                 return response()->json([
                     'success' => false,
