@@ -64,13 +64,19 @@ This project also implement scheduled task for recharge credit for every first d
 
 To run manually the scheduling:
 
-1. Check the task
+1. Run the task
 
 ```
     php artisan monthly:autocredits
 ```
 
-2. Run the task
+2. Check the task
 
 ```
-    php artisan list
+    php artisan schedule:list
+```
+
+# Postman Documentation
+
+Here Postman API documentation for this project.
+[Postman Documentation](https://documenter.getpostman.com/view/7115990/UVRAJSzE)
