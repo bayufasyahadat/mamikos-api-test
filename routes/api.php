@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //availability
     Route::get('/transaction/availability', [TransactionController::class, 'getAvailabilityStatus']);
     Route::post('/kost/availability/ask/{kostId}', [TransactionController::class, 'askAvailabilityStatus']);
+    Route::post('/kost/availability/confirm/{kostId}', [TransactionController::class, 'confirmAvailabilityStatus']);
+    
 
 });
 
